@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;  
+using System.Collections.Generic; 
+using OneSignalPush;
 
 //Attach this script to an object in the first scene that is loaded when your game is opened.
 public class GravitumOneSignalInit : MonoBehaviour {
