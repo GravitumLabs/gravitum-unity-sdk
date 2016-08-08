@@ -11,12 +11,24 @@ public class GravitumOneSignalInit : MonoBehaviour {
     //See: https://documentation.onesignal.com/docs/onesignal-unity-sdk-api#Init
 	void Start () {
         
-        //OneSignal Init
-        string appId = "########";//Insert your OneSignal app ID (from the onesignal dashboard) here. E.g. "79a1aa3c-69a4-444c-9d2a-194d16175848"
-        string googleProjectNumber = "#######";// Insert your Google project number(also called SenderID) from the GoogleDeveloper Dashboard / Google Services Zizard here. E.g. "178716085905"
+        //Setup Gravitum optional methods below
+		/*
+        Gravitum.Analytics.SetUserId(user_id);
+        Gravitum.Analytics.SetUserName(user_name);
+        Gravitum.Analytics.SetFacebookId(facebookId);
+        Gravitum.Analytics.SetGender(Gravitum.Analytics.Gender.Male);
+        Gravitum.Analytics.SetBirthday(new System.DateTime(1985, 5, 16, 0, 0, 0, 0, System.DateTimeKind.Utc));
+        */
+		Gravitum.Analytics.Init ();//COMPULSORY for Gravitum to work
+        
+        
+        
+        //Initialize OneSignal
+		string appId = "XXXXXXXXXX";//Insert your OneSignal app ID (from the onesignal dashboard) here. E.g. "79a1aa3c-69a4-444c-9d2a-194d16175848"
+		string googleProjectNumber = "XXXXXXXXXXX";// Insert your Google project number(also called SenderID) from the GoogleDeveloper Dashboard / Google Services Wizard here. E.g. "178716085905"
 		OneSignal.Init(appId, googleProjectNumber, HandleNotification);
 		
-        //Request the  OneSignal userID
+        //Request the  OneSignal userID. Required for Gravitum - OneSignal integration
 		OneSignal.GetIdsAvailable(IdsAvailable);
 	}
 
@@ -43,18 +55,8 @@ public class GravitumOneSignalInit : MonoBehaviour {
 	//OneSignal Handler function for when the OneSignal PlayerID is available.
     //See:https://documentation.onesignal.com/docs/onesignal-unity-sdk-api#IdsAvailable
 	private void IdsAvailable(string OneSigPlayerID, string pushToken) {
-
-		//Setup Gravitum optional methods below
-		/*
-        Gravitum.Analytics.SetUserId(user_id);
-        Gravitum.Analytics.SetUserName(user_name);
-        Gravitum.Analytics.SetFacebookId(facebookId);
-        Gravitum.Analytics.SetGender(Gravitum.Analytics.Gender.Male);
-        Gravitum.Analytics.SetBirthday(new System.DateTime(1985, 5, 16, 0, 0, 0, 0, System.DateTimeKind.Utc));
-        */
         
-        //These two are COMPULSORY for Gravitum + OneSignal to work
+        //This line below is COMPULSORY for Gravitum + OneSignal to work
 		Gravitum.Analytics.SetDevicePushToken (OneSigPlayerID);
-		Gravitum.Analytics.Init ();
 	}
 }
