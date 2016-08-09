@@ -24,8 +24,8 @@ public class GravitumOneSignalInit : MonoBehaviour {
         
         
         //Initialize OneSignal
-		string appId = "XXXXXXXXXX";//Insert your OneSignal app ID (from the onesignal dashboard) here. E.g. "79a1aa3c-69a4-444c-9d2a-194d16175848"
-		string googleProjectNumber = "XXXXXXXXXXX";// Insert your Google project number(also called SenderID) from the GoogleDeveloper Dashboard / Google Services Wizard here. E.g. "178716085905"
+		string appId = "PUT YOUR ONESIGNAL APP ID HERE";//Insert your OneSignal app ID (from the onesignal dashboard) here. E.g. "79a1aa3c-69a4-444c-9d2a-194d16175848"
+		string googleProjectNumber = "PUT YOUR GOOGLE PROJECT NUMBER HERE";// Insert your Google project number(also called SenderID) from the GoogleDeveloper Dashboard / Google Services Wizard here. E.g. "178716085905"
 		OneSignal.Init(appId, googleProjectNumber, HandleNotification);
 		
         //Request the  OneSignal userID. Required for Gravitum - OneSignal integration
